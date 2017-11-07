@@ -1,0 +1,156 @@
+\documentclass{vdocdiplcz}
+
+\usepackage{czech}     % nastavte jazyk podle sve distribuce
+%\usepackage{comment}   % komentare pres vice radku \begin{comment} .... \end{comment}
+%
+\usepackage{graphicx}
+
+\usepackage[latin2]{inputenc} % Aby v zalozkach fungovala spravne diakritika, nastavte podle sveho editoru
+
+% nastaveni barev a dalsich vlastnosti pro interaktivni odkazy:
+\usepackage{color}
+\definecolor{seda}{rgb}{.5,.5,.5}
+\definecolor{modra}{rgb}{.02,.02,.4}
+\definecolor{zelena}{rgb}{.02,.4,.01}
+\definecolor{fialova}{rgb}{.5,.05,.5}
+\definecolor{zluta}{rgb}{.5,.5,.05}
+\definecolor{cervena}{rgb}{.7,.2,.2}
+\definecolor{oranzova}{rgb}{.8,.4,.05}
+\usepackage[bookmarkstype={toc},colorlinks,bookmarksnumbered,%
+unicode,linkcolor={modra},%
+citecolor={zelena},urlcolor={modra}]{hyperref}
+
+%\usepackage{picins,wrapfig}   % obtekani obrazku - picins pro obrazky bez popisku, wrapfig pro obrazky s popiskem
+%\usepackage{multicol}    % vicesloupcova sazba, pokud ji potrebujeme
+%
+%\usepackage{subfigure}  % sada zvlast oznacenych objektu v jednom figure
+\usepackage{appendix}  % prilohy
+
+%\usepackage{textcomp,gensymb,bbding,amsfonts,mathrsfs}  %  balicky pro symboly
+%\usepackage{wasysym,latexsym,gensymb,pifont,phonetic,mathcomp,fancybox}  %pripadne balicky se symboly
+
+%\usepackage{alltt}    % prostredi pro psani kodu
+
+
+%******************************************************************************
+% pokud pracujeme na konkretni kapitole a chceme prekladat jenom ji, pouzijeme:
+%******************************************************************************
+%\includeonly{kapitola01_nazev}      % nebo vice kapitol podle vyberu:
+%\includeonly{kapitola00_uvod,kapitola01_nazev}
+
+
+\autor{Jméno a pøíjmení, pøíp. s titulem}
+\vedouci{Jméno a pøíjmení vedoucího vè. titulù}
+%\obor{název svého oboru, tøeba Informatika a výpoèetní technika}
+\nazev{Název práce èesky}
+\nazevanglicky{Název práce anglicky}
+\rok{2014}   % pozor, musi byt rok obhajoby, nikoliv rok, kdy byla prace vytisknuta
+\typprace{Bakaláøská práce}    % Bakaláøská práce, Diplomová práce, Rigorózní práce, Disertaèní práce
+%\nazevvedouciho{Vedoucí diplomové práce}   %Vedoucí bakaláøské práce, Vedoucí diplomové práce, Školitel
+\abstrakt{...... napište odstavec, který charakterizuje práci (co se ètenáø dozví, k èemu práce smìøuje, co je popsáno, co bylo vytvoøeno, apod.)}
+\abstraktanglicky{..... anglický pøeklad èeského abstraktu, prosím nespoléhejte na Google Translate.}
+\klicovaslova{seznam klíèových slov, nejménì 3}
+\klicovaslovaanglicky{totéž anglicky}
+
+
+% pokud máte odstavce s abstrakty pøíliš dlouhé a nevejde se vše na jednu stranu, pak odkomentujte následující makro:
+%\longabstract
+
+
+% pouze pro potøeby demonstraèního dokumentu, jinak zde doplòte vlastní podklad zadání práce:
+\renewcommand{\kopiepodkladu}{
+  \begin{picture}(0,0)
+  \put(10,-50){\rotatebox{-35}{\scalebox{3}{\color{seda}Kopie podkladu zadání práce}}}
+  \put(10,-130){\rotatebox{-35}{\scalebox{3}{\color{seda}ze STAGu, podepsaná}}}
+  \put(10,-210){\rotatebox{-35}{{\color{seda}\LARGE (buï naskenovat a vložit obrázek, nebo vložit vytisknuté)}}}
+  \end{picture}}
+
+
+\cestneprohlaseni{%
+  Prohlašuji, že jsem tuto práci vypracoval samostatnì.
+  Veškerou literaturu a~další zdroje, z nichž jsem pøi zpracování èerpal, v práci øádnì cituji a jsou uvedeny v seznamu použité literatury.}
+
+\podekovani{%
+  Rád bych podìkoval za odborné vedení, rady a cenné poznatky k danému tématu vedoucímu práce ....... 
+  Také bych rád podìkoval mé rodinì a pøátelùm za podporu a pomoc bìhem mého studia.}
+
+
+\begin{document}
+
+
+% nemìnit (vygeneruje titulní strany):
+\maketitlepages
+
+% nemìnit (vygeneruje obsah):
+\tableofcontents\clearpage
+
+% nemìnit (nastaví parametry odstavce a øádkování):
+\nastavodstavec   %nastavi parametry odstavce
+\radkovani   % navrat na hlavni nastaveni radkovani urcene prikazem \radkovanistandard{...}
+
+% nemìnit (odtud bude zaèínat èíslování stránek, zaèátek stránek s kapitolami):
+\mainmatter
+
+%%%%%%%%%%%%%%%%%%%%%%
+% soubory s kapitolami, kazda kapitola v samostatnem souboru, pak lze pouzivat mechanismus \includeonly{...}
+
+\include{kapitola00_uvod}
+%\include{kapitola01_nazevsouboru}
+% .... atd. vsechny soubory s kapitolami
+\include{zaver}
+
+
+\renewcommand{\refname}{Seznam doporuèené literatury}
+
+\include{literatura}
+
+
+%
+\listoffigures\clearpage
+%
+\listoftables\clearpage
+
+
+\include{seznamzkratek}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+% Pokud mate prilohy:
+
+\clearpage
+%
+\addcontentsline{toc}{section}{{Pøílohy }}
+\clearpage
+%
+\appendix
+%
+
+%%%%%%%%%%%%%%%%%%%%%
+%Seznam priloh:
+  \rule{0pt}{1pt}\thispagestyle{empty}
+  %\cleardoublepage\thispagestyle{empty}
+    \vspace*{\stretch{1}}\par
+\begin{center}
+    {\Huge\bfseries\scshape\appendixpagename}
+    \vspace{7em}
+    
+\begin{citemize}
+	\item Na pøiloženém CD:
+	\begin{citemize}
+		\item text této práce (soubor xxxxxx)
+		\item program yyyyyy
+	\end{citemize}
+	\item Pøíloha A\quad První pøíloha
+	\item Pøíloha B\quad Název další pøílohy
+\end{citemize}
+\end{center}
+    \vspace{\stretch{2}}\rule{0pt}{1pt}
+
+  \clearpage
+  \pagenumbering{roman}
+
+%\include{priloha01_prvnipriloha}
+%\include{priloha02_zdroje}
+
+
+\end{document}
